@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ВСЁ ПРО СЮЖЕТ — обязательно читать</title>
+  <style>
+    :root {
+      --bg: #06110a;
+      --bg2: #0b1b12;
+      --card: rgba(14, 36, 23, 0.92);
+      --card2: rgba(20, 50, 32, 0.95);
+      --accent: #86df9d;
+      --accent2: #59b874;
+      --text: #eefbf1;
+      --muted: #b5d9bf;
+      --line: rgba(134, 223, 157, 0.18);
+      --shadow: 0 14px 35px rgba(0, 0, 0, 0.45);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top, rgba(134, 223, 157, 0.14), transparent 34%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .hero {
+      position: relative;
+      padding: 72px 20px 28px;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("/static/images/forest.jpg") center/cover no-repeat;
+      opacity: 0.22;
+      transform: scale(1.04);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(6,17,10,0.2), rgba(6,17,10,0.96));
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .title-box {
+      background: rgba(9, 24, 15, 0.62);
+      border: 1px solid rgba(134, 223, 157, 0.16);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      border-radius: 28px;
+      padding: 30px;
+    }
+
+    .kicker {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(134, 223, 157, 0.12);
+      border: 1px solid rgba(134, 223, 157, 0.24);
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 16px;
+      letter-spacing: 0.4px;
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(30px, 5vw, 58px);
+      line-height: 1.02;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.7;
+      max-width: 700px;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(14, 36, 23, 0.88), rgba(9, 24, 15, 0.94));
+      border: 1px solid rgba(134, 223, 157, 0.16);
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card img {
+      width: 100%;
+      height: 340px;
+      object-fit: cover;
+      display: block;
+      border-bottom: 1px solid rgba(134, 223, 157, 0.12);
+      opacity: 0.9;
+    }
+
+    .hero-card .caption {
+      padding: 16px 18px 18px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .nav-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 22px 20px 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .nav-title {
+      margin: 0 0 12px;
+      font-size: 20px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-align: left;
+    }
+
+    .nav-panel {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      background: rgba(8, 22, 14, 0.66);
+      border: 1px solid rgba(134, 223, 157, 0.15);
+      border-radius: 22px;
+      padding: 14px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-link {
+      padding: 12px 16px;
+      border-radius: 14px;
+      background: rgba(134, 223, 157, 0.08);
+      border: 1px solid rgba(134, 223, 157, 0.12);
+      color: var(--text);
+      font-weight: 600;
+      transition: 0.2s ease;
+    }
+
+    .nav-link:hover {
+      transform: translateY(-2px);
+      background: rgba(134, 223, 157, 0.16);
+      border-color: rgba(134, 223, 157, 0.28);
+    }
+
+    .main-shell {
+      position: relative;
+      margin-top: 18px;
+      padding: 24px 0 80px;
+      overflow: hidden;
+    }
+
+    .main-shell::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(6,17,10,0.68), rgba(6,17,10,0.92)),
+        url("/static/images/greenlost.jpg") center/cover no-repeat;
+      opacity: 1;
+      transform: scale(1.02);
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .section {
+      margin-top: 30px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .section-head {
+      padding: 22px 24px;
+      background: linear-gradient(90deg, rgba(134, 223, 157, 0.16), rgba(134, 223, 157, 0.03));
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: 26px;
+      letter-spacing: 0.4px;
+    }
+
+    .section-head p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .content {
+      padding: 24px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+    }
+
+    .role-card {
+      grid-column: span 6;
+      background: var(--card2);
+      border: 1px solid rgba(134, 223, 157, 0.14);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: 0.2s ease;
+    }
+
+    .role-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(134, 223, 157, 0.28);
+    }
+
+    .role-card img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      display: block;
+      background: rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(134, 223, 157, 0.1);
+      opacity: 0.95;
+    }
+
+    .role-body {
+      padding: 18px;
+    }
+
+    .role-body h3 {
+      margin: 0 0 10px;
+      font-size: 21px;
+    }
+
+    .placeholder {
+      border: 1.5px dashed rgba(134, 223, 157, 0.34);
+      border-radius: 18px;
+      padding: 18px;
+      background: rgba(134, 223, 157, 0.04);
+      color: var(--muted);
+      line-height: 1.8;
+      min-height: 150px;
+      white-space: pre-wrap;
+    }
+
+    .story-box {
+      background: var(--card2);
+      border: 1px solid rgba(134, 223, 157, 0.14);
+      border-radius: 20px;
+      padding: 20px;
+    }
+
+    .story-box h3 {
+      margin: 0 0 12px;
+      font-size: 21px;
+    }
+
+    .story-box .placeholder {
+      min-height: 260px;
+    }
+
+    .full { grid-column: span 12; }
+
+    .footer-note {
+      margin-top: 26px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .role-card {
+        grid-column: span 12;
+      }
+
+      .hero-card img {
+        height: 260px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="title-box">
+        <div class="kicker">РОЛЕВАЯ ЧАСТЬ</div>
+        <h1>ВСЁ ПРО СЮЖЕТ — обязательно читать</h1>
+        <p class="subtitle">
+          Сайт был сделан для удобства ролевикам. Приятного чтения! Обязательно прочитайте роли и сюжет) навигация есть ниже
+        </p>
+      </div>
+
+      <div class="hero-card">
+        <img src="/static/images/plot_roles.jpg" alt="Баннер ролевой">
+        <div class="caption">
+          ⸼ִ ᨳ࣪ ៸៸ ⌒ ׁ⌒ ۫͟͟𐔌ಢ ֵ۫۫꒱۫ ⌒ ׁ⌒ ៸៸ ɞ ִ⸼
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-wrap">
+      <h2 class="nav-title">НАВИГАЦИЯ</h2>
+      <div class="nav-panel">
+        <a class="nav-link" href="#roles">Роли</a>
+        <a class="nav-link" href="#brief-plot">Краткий сюжет</a>
+        <a class="nav-link" href="#plot">Сюжет</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="main-shell">
+    <main class="container">
+
+      <section class="section" id="roles">
+        <div class="section-head">
+          <h2>◯⃘࣪𓏴 ׅࣳ  ＲＯＬＥＳ 𝇌ׄ ׁ 𓈒</h2>
+          <p>ᴩᴏᴧи и их ᴏᴨиᴄᴀния</p>
+        </div>
+
+        <div class="content">
+          <div class="grid">
+
+            <article class="role-card">
+              <img src="/static/images/vii.jpg" alt="Оператор по миграции">
+              <div class="role-body">
+                <h3>Оператор по миграции</h3>
+                <div class="placeholder">
+                  <!-- ВСТАВЬ СЮДА ОПИСАНИЕ РОЛИ -->
+                  Текст про роль, обязанности, статус, ограничения, важные связи с сюжетом.
+                </div>
+              </div>
+            </article>
+
+            <article class="role-card">
+              <img src="/static/images/horse.jpg" alt="Зачистщик">
+              <div class="role-body">
+                <h3>Зачистщик</h3>
+                <div class="placeholder">
+                  <!-- ВСТАВЬ СЮДА ОПИСАНИЕ РОЛИ -->
+                  Текст про роль, обязанности, стиль работы, доступы, поведение и т.д.
+                </div>
+              </div>
+            </article>
+
+            <article class="role-card">
+              <img src="/static/images/medic.jpg" alt="Учёный и медик">
+              <div class="role-body">
+                <h3>Учёный (+медик)</h3>
+                <div class="placeholder">
+                  <!-- ВСТАВЬ СЮДА ОПИСАНИЕ РОЛИ -->
+                  Описание роли, научная часть, медицинская часть, специализация и всё нужное.
+                </div>
+              </div>
+            </article>
+
+            <article class="role-card">
+              <img src="/static/images/svo.jpg" alt="Военный">
+              <div class="role-body">
+                <h3>Военный</h3>
+                <div class="placeholder">
+                  <!-- ВСТАВЬ СЮДА ОПИСАНИЕ РОЛИ -->
+                  Текст про военную роль, обязанности, подчинение, задачи и статус.
+                </div>
+              </div>
+            </article>
+
+            <article class="role-card full">
+              <img src="/static/images/cadet.jpg" alt="Кадет">
+              <div class="role-body">
+                <h3>Кадет</h3>
+                <div class="placeholder">
+                  <!-- ВСТАВЬ СЮДА ОПИСАНИЕ РОЛИ -->
+                  текст...
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="brief-plot">
+        <div class="section-head">
+          <h2>Кᴩᴀᴛᴋий ᴄюжᴇᴛ</h2>
+          <p>Короткая выжимка для тех, кто не хочет сразу читать километровый лор.</p>
+        </div>
+
+        <div class="content">
+          <div class="story-box">
+            <h3>• ִ ◌ ۫ ∘ ִ ◌ ۫ ∘┊𓈒 ִ۫ 𐜤 ִֺ۪ 𓈒┊∘ ۫ ◌ ִ ∘ ۫ ◌ ִ •</h3>
+            <div class="placeholder">
+              <!-- ВСТАВЬ СЮДА КРАТКОЕ ОПИСАНИЕ СЮЖЕТА -->
+              текст....
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="plot">
+        <div class="section-head">
+          <h2>СЮЖЕТ</h2>
+          <p></p>
+        </div>
+
+        <div class="content">
+          <div class="story-box">
+            <h3>ִ⸼ ╴۫╸ִ╴𝆥꒰ꪆ ִ۫ ꔫ ୧˒ ࣪ ꒱𝆟╶╺۫╶ִ╺╶ִ ⸼ִ</h3>
+            <div class="placeholder">
+В 2024 году вирус бактериофаг мутировал под воздействием человека. Эксперименты учёных, которые, между прочим, законными не были. Наверное, потому все так и произошло.
+Вернемся к теме. Вирус мутировал, и теперь был настроен против людей. Он стал проникать не только в бактерии, но и в клетки человека, а лучше всего прижились в клетках мозга. Мутация прошла очень выгодно — теперь она заставляла размножаться через нападения на себе подобных, тем самым создав зомби.
+Правительство пало в том же году, долго они не продержались. Кто погиб, кого свергли, кто сам ушел в отставку. Да, Где-то за границей остались цивилизованные государства, но это единичные случаи. В основном же, человечество осталось на произвол судьбы, без определённого вождя. Этот момент в истории назвали «Падением».
+Осталось лишь мелкое правительство вроде мэров, но далеко не в каждом городе. Если людям везло стать счастливчиками, то жизнь их была лучше. В таких городах была своеобразная местная армия, открывались различные учебные заведения для выживших подростков и детей, где тех готовили к взрослой жизни, но также можно было завершить школьную программу.
+К тридцать мятому году по штатам поползли слухи. Мол, что во Флориде тоже был уцелевший город, Джэксонвилл. Более того, там, как говорилось, отстроили стену, и полностью зачистили город от заражённых и, вероятно, простых людей тоже. Слухи быстро стали проверяться — на уцелевших машинах, оставшиеся стали проверять. И.. Это оказалось чистейшей правдой! Джэксонвилл, ранее курортный и самый большой город Флориды был цел и не вредим. Точнее, такое складывалось впечатление, ведь самого пункта населения видно не было — его охраняла огромная, высоченная и толстая камено-кирпичная стена. Просто уму не постижимо! Местные дали ей гордое название Бастион, которое быстро стало официальным. Там же можно было встретить армию, настоящую. Вооружённые люди, в форме, а на ней логотип: «S.S.S.».
+Чтобы попасть внутрь нужно пройти карантинную зону. Сначала простой досмотр, как когда-то давно на границах стран — проверка сумок, карманов, документов. Базовая проверка здоровья — наличие температуры и укусов на теле.. Тем, кто был «чист», дальше дорога лежала в саму карантинную зону. Прожить там недели? Обычное дело.
+Прошедшим отсеивание теперь светила всеми своими лучами лучшая жизнь. В Джэксонвилле была компания — Second Sunrise Solution. Новая версия правительства, а точнее, его правая рука. В Джэксонвилле наконец появилась иерархия, а компания полностью финансировалась остатками Штатов, и мало-помалу вышло наскрести хорошую сумму.
+Места, чтобы устроиться в компанию были ограничены. Первые месяцы были лучшие времена для простых смертных — брали в разы проще чем позже.
+В город массово стали мигрировать. Помогала в этом все та же компания, и её новые рабочие.
+Все устаканилось в первые пол года, хотя прошло около двадцати лет. Город стал стабильно населен, пусть и пополнялся парой-тройкой новых жителей почти ежедневно. S.S.S. была просто идеальна, настроена абсолютно искренне на сохранение расы, и не складывая ни копейки в карман. Теперь туда было пробиться в разы тяжелее — они взяли себе под опеку один единственный Кадетский Интернат, и рассчитывали, что когда дети там вырастут будут работать именно у них.
+И не смотря на эту прекрасную, спокойную жизнь, за Бастионом был все тот же ужасный, страшный мир. Заражённые, и люди. Люди, которые всю свою жизнь старались найти спокойное место, и по слухам знали, что где-то их ожидает стена, и что лучше неё уж точно не будет. Или те, кто сошёл с ума, создал или вступил в религиозную секту? Бастионцы, которые были простыми жителями, точно не знали, как все обстоит за стеной. Выбирались за нее лишь некоторые сотрудники S.S.S., но тем что, заняться нечем, рассказывать такую чепуху? В общем то, это остаётся в тайне.
+Что выберешь ты? Будешь ли добираться до Бастиона, или ты уже там? Хочешь пробиваться в S.S.S., или тебя устраивает быть официантом в забегаловке на углу? Выбор только за тобой.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="footer-note">
+        СВЯЗИ C АДМИНАМИ: @Moonolit @am3r1ca_usa @Aas2y4 :
+        
+      </div>
+    </main>
+  </div>
+
+</body>
+</html>
