@@ -365,12 +365,101 @@
       text-align: center;
     }
 
+    .rules-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+    }
+
+    .rule-card {
+      grid-column: span 6;
+      background: linear-gradient(180deg, rgba(20, 50, 32, 0.98), rgba(14, 36, 23, 0.98));
+      border: 1px solid rgba(134, 223, 157, 0.14);
+      border-radius: 22px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .rule-card.full {
+      grid-column: span 12;
+    }
+
+    .rule-top {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .rule-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: rgba(134, 223, 157, 0.12);
+      border: 1px solid rgba(134, 223, 157, 0.18);
+      font-size: 20px;
+      flex: 0 0 auto;
+    }
+
+    .rule-card h3 {
+      margin: 0;
+      font-size: 21px;
+      color: var(--text);
+    }
+
+    .rule-card p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .rule-card ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .rule-card li {
+      margin-bottom: 8px;
+    }
+
+    .mini-note {
+      margin-top: 10px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(134, 223, 157, 0.06);
+      border: 1px solid rgba(134, 223, 157, 0.14);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .link-chip {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(134, 223, 157, 0.1);
+      border: 1px solid rgba(134, 223, 157, 0.18);
+      color: var(--text);
+      font-weight: 600;
+      transition: 0.2s ease;
+    }
+
+    .link-chip:hover {
+      background: rgba(134, 223, 157, 0.16);
+      transform: translateY(-1px);
+    }
+
     @media (max-width: 900px) {
       .hero-inner {
         grid-template-columns: 1fr;
       }
 
-      .role-card {
+      .role-card,
+      .rule-card {
         grid-column: span 12;
       }
 
@@ -407,6 +496,8 @@
         <a class="nav-link" href="#roles">Роли</a>
         <a class="nav-link" href="#brief-plot">Краткий сюжет</a>
         <a class="nav-link" href="#plot">Сюжет</a>
+        <a class="nav-link" href="#role-etiquette" target="_blank" rel="noopener noreferrer">Ролевой этикет</a>
+        <a class="nav-link" href="#rules">Правила ролевой</a>
       </div>
     </div>
   </header>
@@ -465,6 +556,7 @@
           </div>
 
           <div class="grid">
+
             <article class="role-card">
               <img src="/static/images/vii.jpg" alt="Оператор по миграции">
               <div class="role-body">
@@ -545,6 +637,7 @@
                 </div>
               </div>
             </article>
+
           </div>
         </div>
       </section>
@@ -614,6 +707,146 @@
 
 Выбор всегда за тобой.
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="rules">
+        <div class="section-head">
+          <h2>ПРАВИЛА РОЛЕВОЙ</h2>
+          <p>Коротко, по делу и без нервного дерганья за хвост лора.</p>
+        </div>
+
+        <div class="content">
+          <div class="rules-grid">
+
+            <article class="rule-card full">
+              <div class="rule-top">
+                <div class="rule-icon">📜</div>
+                <h3>Общие правила</h3>
+              </div>
+              <p>
+                Мы принимаем в проект как людей с опытом, так и тех, кто не особо любит расписывать много в постах. Но если вы совсем малострочник, и не можете написать более чем 10–15 предложений — мимо.
+              </p>
+              <p>
+                Разрешены любые сюжетные линии, однако сцены с неприятным или чувствительным содержанием должны сопровождаться TW (триггер-предупреждением) и помещаться под спойлер.
+              </p>
+              <p>
+                Просим соблюдать адекватность: не допускается бред, абсурд или полная потеря характера персонажа. За подобное поведение последует исключение из ролевой.
+              </p>
+              <p>
+                Администрация вправе сначала выдать словесное предупреждение, прежде чем переходить к санкциям. В зависимости от ситуации может быть вынесен варн, мут или другая мера.
+              </p>
+            </article>
+
+            <article class="rule-card">
+              <div class="rule-top">
+                <div class="rule-icon">🧩</div>
+                <h3>Про ветки</h3>
+              </div>
+              <p>Что это? Какие хештеги необходимо ставить в пост?</p>
+              <p>
+                Каждый пост должен быть оформлен с хештегами: название ветки и имя персонажа.
+              </p>
+              <div class="mini-note">
+                Пример:<br>
+                <strong>#Александр #название_ветки</strong>
+              </div>
+              <p>
+                Хотите узнать подробнее? Напишите во флуде “заметка ветки”.
+              </p>
+              <p>
+                Параллельные ветки вести запрещено. Если персонаж участвует в одном событии/локации, он не может одновременно находиться в другой — это ломает логику сюжета и таймлайн ролевой.
+              </p>
+            </article>
+
+            <article class="rule-card">
+              <div class="rule-top">
+                <div class="rule-icon">💬</div>
+                <h3>Флуд и ролевой чат</h3>
+              </div>
+              <p>
+                В основном ролевом чате флудить нежелательно. Не запрещено, никто вас за мем не расстреляет, но из-за лишнего флуда игровые посты теряются, а потом начинается «ой, я не видел».
+              </p>
+              <p>
+                Поэтому болтовня — во флуд, рп — в ролевой чат.
+              </p>
+            </article>
+
+            <article class="rule-card">
+              <div class="rule-top">
+                <div class="rule-icon">🧠</div>
+                <h3>Сюжет и участие в событиях</h3>
+              </div>
+              <p>
+                Игнорить игровые события, действия ГМа, ивенты запрещено.
+              </p>
+              <p>
+                Если вы не хотите участвовать в глобальном сюжете — отыгрывайте в личке. Но в общем пространстве сюжет обязателен.
+              </p>
+              <p>
+                Конструктивная критика приветствуется. Но “мне не нравится сеттинг” / “сюжет тупой” — это не конструктив. Если вам некомфортно с фундаментом проекта — возможно, стоит подумать, остаётесь ли вы здесь.
+              </p>
+              <p>
+                Все идеи по сюжету обсуждаются только в админ-чате.
+              </p>
+              <p>
+                Спойлеры и раскрытие тайн в общий чат запрещено.
+              </p>
+              <p>
+                Норма ролевой считается на каждого активного персонажа отдельно.
+              </p>
+            </article>
+
+            <article class="rule-card">
+              <div class="rule-top">
+                <div class="rule-icon">👤</div>
+                <h3>Про вступление</h3>
+              </div>
+              <p>
+                Заходить можно только за людей. За фандомных персонажей вступать запрещено: необходимо придумать своего.
+              </p>
+            </article>
+
+            <article class="rule-card">
+              <div class="rule-top">
+                <div class="rule-icon">🔞</div>
+                <h3>NSFW</h3>
+              </div>
+              <p>
+                NSFW/18+ контент допускается ТОЛЬКО под блюром и с предупреждением.
+              </p>
+            </article>
+
+            <article class="rule-card full" id="role-etiquette">
+              <div class="rule-top">
+                <div class="rule-icon">📎</div>
+                <h3>Ролевой этикет</h3>
+              </div>
+              <p>
+                Подробный разбор по TW/CW и оформлению постов — здесь:
+              </p>
+              <a class="link-chip" href="https://teletype.in/@pj_file/bvcGK0avWmA" target="_blank" rel="noopener noreferrer">
+                Открыть ролевой этикет
+              </a>
+            </article>
+
+            <article class="rule-card full">
+              <div class="rule-top">
+                <div class="rule-icon">⚠️</div>
+                <h3>Что такое tw/cw и как их ставить в пост?</h3>
+              </div>
+              <p>
+                Для удобства и безопасности проекта используйте предупреждения на чувствительный контент.
+              </p>
+              <p>
+                Подробная памятка по оформлению:
+              </p>
+              <a class="link-chip" href="https://basictwcw.carrd.co/" target="_blank" rel="noopener noreferrer">
+                Открыть памятку TW/CW
+              </a>
+            </article>
+
           </div>
         </div>
       </section>
