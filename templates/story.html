@@ -313,6 +313,45 @@
       opacity: 0.9;
     }
 
+    .sss-box {
+      background: linear-gradient(180deg, rgba(20, 50, 32, 0.98), rgba(14, 36, 23, 0.98));
+      border: 1px solid rgba(134, 223, 157, 0.18);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .sss-box h3 {
+      margin: 0 0 14px;
+      font-size: 24px;
+      color: var(--accent);
+      letter-spacing: 0.3px;
+    }
+
+    .sss-box p {
+      margin: 0 0 14px;
+      line-height: 1.8;
+      color: var(--text);
+    }
+
+    .sss-box .muted {
+      color: var(--muted);
+    }
+
+    .sss-divider {
+      margin: 22px 0 18px;
+      height: 1px;
+      background: rgba(134, 223, 157, 0.18);
+    }
+
+    .sss-title {
+      margin: 0 0 12px;
+      font-size: 22px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
     @media (max-width: 900px) {
       .hero-inner {
         grid-template-columns: 1fr;
@@ -351,6 +390,7 @@
     <div class="nav-wrap">
       <h2 class="nav-title">НАВИГАЦИЯ</h2>
       <div class="nav-panel">
+        <a class="nav-link" href="#sss">S.S.S.</a>
         <a class="nav-link" href="#roles">Роли</a>
         <a class="nav-link" href="#brief-plot">Краткий сюжет</a>
         <a class="nav-link" href="#plot">Сюжет</a>
@@ -360,6 +400,45 @@
 
   <div class="main-shell">
     <main class="container">
+
+      <section class="section" id="sss">
+        <div class="section-head">
+          <h2>Second Sunrise Solution (S.S.S.)</h2>
+          <p>Что это за компания, зачем она существует и как устроена её система.</p>
+        </div>
+
+        <div class="content">
+          <div class="sss-box">
+            <h3>Что такое S.S.S.</h3>
+            <p>
+              S.S.S. — это сокращённое название компании Second Sunrise Solution. Она была создана на остатках государственного бюджета США, но позже полностью вышла на самообеспечение.
+            </p>
+            <p>
+              Компания существует с целью сохранения человеческой расы, поэтому формально считается благотворительной. На 2054 год она принимает большую часть выпускников Кадетского Интерната, но попасть в неё можно и позже — например, если есть военный опыт, навыки обращения с оружием или другие значимые достижения.
+            </p>
+
+            <div class="sss-divider"></div>
+
+            <h3>Условия работы и “зарплата”</h3>
+            <p>
+              Вместо обычной зарплаты сотрудники получают жильё и обеспечение.
+            </p>
+            <p>
+              Компания владеет несколькими общежитиями, устроенными по типу малосемеек времён СССР. Каждый работник получает отдельную однокомнатную квартиру с базовой мебелью. При этом кухня, душ и туалет — общие на этаж/секции.
+            </p>
+            <p>
+              Также сотрудники обеспечиваются одеждой, обувью, продуктами, крупами и базовыми медикаментами — всем необходимым для выживания.
+            </p>
+
+            <div class="sss-divider"></div>
+
+            <h3 class="sss-title">Профессии в S.S.S.</h3>
+            <p class="muted">
+              Ниже перечислены должности и роли компании.
+            </p>
+          </div>
+        </div>
+      </section>
 
       <section class="section" id="roles">
         <div class="section-head">
@@ -463,7 +542,7 @@
 
         <div class="content">
           <div class="story-box">
-            <h3>• ִ ◌ ۫ ∘ ִ ◌ ۫ ∘┊𓈒 ִ۫ 𐜤 ִֺ۪ 𓈒┊∘ ۫ ◌ ִ ∘ ۫ ◌ ִ •</h3>
+            <h3>• ִ ◌ ۫ ∘ ִ ◌ ۫ ∘┊𓈒 ִ۫ 𓐈 ִֺ۪ 𓈒┊∘ ۫ ◌ ִ ∘ ۫ ◌ ִ •</h3>
             <div class="placeholder">
               <!-- ВСТАВЬ СЮДА КРАТКОЕ ОПИСАНИЕ СЮЖЕТА -->
               текст....
@@ -526,7 +605,6 @@
 
       <div class="footer-note">
         СВЯЗИ C АДМИНАМИ: @Moonolit @am3r1ca_usa @Aas2y4 :
-
       </div>
     </main>
   </div>
