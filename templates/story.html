@@ -28,9 +28,28 @@
       font-family: "Segoe UI", Arial, sans-serif;
       color: var(--text);
       min-height: 100vh;
+      position: relative;
       background:
-        radial-gradient(circle at top, rgba(134, 223, 157, 0.14), transparent 34%),
-        linear-gradient(180deg, var(--bg), var(--bg2));
+        radial-gradient(circle at top, rgba(134, 223, 157, 0.12), transparent 34%);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: url("/static/images/phoone.jpg") center/cover no-repeat;
+      z-index: -3;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(6, 17, 10, 0.18), rgba(6, 17, 10, 0.44)),
+        linear-gradient(180deg, rgba(6, 17, 10, 0.18), rgba(6, 17, 10, 0.2));
+      z-index: -2;
+      pointer-events: none;
     }
 
     a {
@@ -193,7 +212,7 @@
       background:
         linear-gradient(180deg, rgba(6,17,10,0.68), rgba(6,17,10,0.92)),
         url("/static/images/greenlost.jpg") center/cover no-repeat;
-      opacity: 1;
+      opacity: 0.72;
       transform: scale(1.02);
       z-index: 0;
     }
@@ -216,22 +235,85 @@
     }
 
     .section-head {
-      padding: 22px 24px;
-      background: linear-gradient(90deg, rgba(134, 223, 157, 0.16), rgba(134, 223, 157, 0.03));
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 24px 24px;
+      background: linear-gradient(90deg, rgba(134, 223, 157, 0.14), rgba(134, 223, 157, 0.03));
       border-bottom: 1px solid var(--line);
+      isolation: isolate;
+    }
+
+    .section-head::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--banner-image) center/cover no-repeat;
+      opacity: 0.23;
+      z-index: -2;
+      transform: scale(1.04);
+    }
+
+    .section-head::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(6, 17, 10, 0.72), rgba(6, 17, 10, 0.28));
+      z-index: -1;
+    }
+
+    .head-copy {
+      max-width: 860px;
     }
 
     .section-head h2 {
       margin: 0;
-      font-size: 26px;
+      font-size: clamp(24px, 3vw, 38px);
       letter-spacing: 0.4px;
+      line-height: 1.1;
+      text-shadow: 0 6px 18px rgba(0,0,0,0.25);
     }
 
     .section-head p {
       margin: 10px 0 0;
-      color: var(--muted);
+      color: rgba(238, 251, 241, 0.88);
       line-height: 1.7;
+      max-width: 780px;
     }
+
+    .back-chip {
+      flex: 0 0 auto;
+      align-self: center;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(134, 223, 157, 0.10);
+      border: 1px solid rgba(134, 223, 157, 0.22);
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+      transition: 0.2s ease;
+    }
+
+    .back-chip:hover {
+      transform: translateY(-2px);
+      background: rgba(134, 223, 157, 0.16);
+      border-color: rgba(134, 223, 157, 0.34);
+    }
+
+    .sss-head { --banner-image: url('/static/images/kotee.jpg'); }
+    .roles-head { --banner-image: url('/static/images/koto.jpg'); }
+    .brief-head { --banner-image: url('/static/images/kot1.jpg'); }
+    .plot-head { --banner-image: url('/static/images/kot2.jpg'); }
+    .rules-head { --banner-image: url('/static/images/kot3.jpg'); }
 
     .content {
       padding: 24px;
@@ -489,7 +571,7 @@
       </div>
     </div>
 
-    <div class="nav-wrap">
+    <div class="nav-wrap" id="nav">
       <h2 class="nav-title">НАВИГАЦИЯ</h2>
       <div class="nav-panel">
         <a class="nav-link" href="#sss">S.S.S.</a>
@@ -506,9 +588,12 @@
     <main class="container">
 
       <section class="section" id="sss">
-        <div class="section-head">
-          <h2>Second Sunrise Solution (S.S.S.)</h2>
-          <p>Что это за компания, зачем она существует и как устроена её система.</p>
+        <div class="section-head sss-head">
+          <div class="head-copy">
+            <h2>Second Sunrise Solution (S.S.S.)</h2>
+            <p>Что это за компания, зачем она существует и как устроена её система.</p>
+          </div>
+          <a class="back-chip" href="#nav">вернуться к навигации</a>
         </div>
 
         <div class="content">
@@ -545,9 +630,12 @@
       </section>
 
       <section class="section" id="roles">
-        <div class="section-head">
-          <h2>◯⃘࣪𓏴 ׅࣳ  ＲＯＬＥＳ 𝇌ׄ ׁ 𓈒</h2>
-          <p>ᴩᴏᴧи и их ᴏᴨиᴄᴀния</p>
+        <div class="section-head roles-head">
+          <div class="head-copy">
+            <h2>◯⃘࣪𓏴 ׅࣳ  ＲＯＬＥＳ 𝇌ׄ ׁ 𓈒</h2>
+            <p>ᴩᴏᴧи и их ᴏᴨиᴄᴀния</p>
+          </div>
+          <a class="back-chip" href="#nav">вернуться к навигации</a>
         </div>
 
         <div class="content">
@@ -643,9 +731,12 @@
       </section>
 
       <section class="section" id="brief-plot">
-        <div class="section-head">
-          <h2>Кᴩᴀᴛᴋий ᴄюжᴇᴛ</h2>
-          <p>Короткая выжимка для тех, кто не хочет сразу читать километровый лор.</p>
+        <div class="section-head brief-head">
+          <div class="head-copy">
+            <h2>Кᴩᴀᴛᴋий ᴄюжᴇᴛ</h2>
+            <p>Короткая выжимка для тех, кто не хочет сразу читать километровый лор.</p>
+          </div>
+          <a class="back-chip" href="#nav">вернуться к навигации</a>
         </div>
 
         <div class="content">
@@ -660,9 +751,12 @@
       </section>
 
       <section class="section" id="plot">
-        <div class="section-head">
-          <h2>СЮЖЕТ</h2>
-          <p></p>
+        <div class="section-head plot-head">
+          <div class="head-copy">
+            <h2>СЮЖЕТ</h2>
+            <p></p>
+          </div>
+          <a class="back-chip" href="#nav">вернуться к навигации</a>
         </div>
 
         <div class="content">
@@ -712,9 +806,12 @@
       </section>
 
       <section class="section" id="rules">
-        <div class="section-head">
-          <h2>ПРАВИЛА РОЛЕВОЙ</h2>
-          <p>Коротко, по делу ;)</p>
+        <div class="section-head rules-head">
+          <div class="head-copy">
+            <h2>ПРАВИЛА РОЛЕВОЙ</h2>
+            <p>Коротко, по делу ;)</p>
+          </div>
+          <a class="back-chip" href="#nav">вернуться к навигации</a>
         </div>
 
         <div class="content">
@@ -805,16 +902,6 @@
               </div>
               <p>
                 Заходить можно только за людей. За фандомных персонажей вступать запрещено: необходимо придумать своего.
-              </p>
-            </article>
-
-            <article class="rule-card">
-              <div class="rule-top">
-                <div class="rule-icon">🔞</div>
-                <h3>NSFW</h3>
-              </div>
-              <p>
-                NSFW/18+ контент допускается ТОЛЬКО под блюром и с предупреждением.
               </p>
             </article>
 
