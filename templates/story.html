@@ -535,6 +535,209 @@
       transform: translateY(-1px);
     }
 
+    /* unified card system */
+    .section {
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+      overflow: visible;
+    }
+
+    .section-head,
+    .title-box,
+    .hero-card,
+    .nav-panel,
+    .nav-group,
+    .concept-card,
+    .role-card,
+    .rule-card,
+    .story-box,
+    .sss-box {
+      background: linear-gradient(180deg, rgba(16, 40, 26, 0.96), rgba(11, 28, 18, 0.96));
+      border: 1px solid rgba(134, 223, 157, 0.14);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .section-head {
+      margin-bottom: 16px;
+    }
+
+    .content {
+      padding: 0;
+    }
+
+    .content > * + * {
+      margin-top: 18px;
+    }
+
+    .nav-panel {
+      align-items: stretch;
+    }
+
+    .nav-group {
+      background: rgba(134, 223, 157, 0.04);
+      border-radius: 18px;
+    }
+
+    .concept-card,
+    .role-card,
+    .rule-card,
+    .story-box,
+    .sss-box {
+      overflow: hidden;
+    }
+
+    .concept-card p,
+    .concept-card li,
+    .story-box .placeholder,
+    .sss-box p,
+    .role-body .placeholder,
+    .rule-card p,
+    .rule-card li {
+      color: var(--muted);
+    }
+
+    .story-box,
+    .sss-box {
+      padding: 24px;
+    }
+
+    .story-box .placeholder {
+      min-height: 320px;
+      border-radius: 18px;
+      background: rgba(134, 223, 157, 0.04);
+      border: 1px solid rgba(134, 223, 157, 0.14);
+    }
+
+    .role-card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .role-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .role-body .placeholder {
+      min-height: 150px;
+      background: rgba(134, 223, 157, 0.04);
+      border: 1px solid rgba(134, 223, 157, 0.14);
+    }
+
+    .rule-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .rule-card p:last-child,
+    .sss-box p:last-child,
+    .concept-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .nav-groups {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      width: 100%;
+    }
+
+    .nav-group {
+      background: rgba(134, 223, 157, 0.05);
+      border: 1px solid rgba(134, 223, 157, 0.12);
+      border-radius: 18px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .nav-group h3 {
+      margin: 0;
+      font-size: 14px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .nav-group-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .concepts-head { --banner-image: url('/static/images/kotee.jpg'); }
+    .internat-head { --banner-image: url('/static/images/kot1.jpg'); }
+
+    .concepts-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+    }
+
+    .concept-card {
+      grid-column: span 6;
+      background: linear-gradient(180deg, rgba(20, 50, 32, 0.98), rgba(14, 36, 23, 0.98));
+      border: 1px solid rgba(134, 223, 157, 0.14);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .concept-card.full {
+      grid-column: span 12;
+    }
+
+    .concept-card h3 {
+      margin: 0 0 14px;
+      font-size: 24px;
+      color: var(--accent);
+      letter-spacing: 0.3px;
+    }
+
+    .concept-card p,
+    .concept-card li {
+      line-height: 1.8;
+      color: var(--text);
+    }
+
+    .concept-card .muted {
+      color: var(--muted);
+    }
+
+    .concept-card ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--text);
+    }
+
+    .concept-card li {
+      margin-bottom: 8px;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(134, 223, 157, 0.08);
+      border: 1px solid rgba(134, 223, 157, 0.14);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
     @media (max-width: 900px) {
       .hero-inner {
         grid-template-columns: 1fr;
@@ -547,6 +750,14 @@
 
       .hero-card img {
         height: 260px;
+      }
+
+      .nav-groups {
+        grid-template-columns: 1fr;
+      }
+
+      .concept-card {
+        grid-column: span 12;
       }
     }
   </style>
@@ -573,58 +784,125 @@
 
     <div class="nav-wrap" id="nav">
       <h2 class="nav-title">НАВИГАЦИЯ</h2>
-      <div class="nav-panel">
-        <a class="nav-link" href="#sss">S.S.S.</a>
-        <a class="nav-link" href="#roles">Роли</a>
-        <a class="nav-link" href="#brief-plot">Краткий сюжет</a>
-        <a class="nav-link" href="#plot">Сюжет</a>
-        <a class="nav-link" href="#role-etiquette" target="_blank" rel="noopener noreferrer">Ролевой этикет</a>
-        <a class="nav-link" href="#rules">Правила ролевой</a>
+
+      <div class="nav-panel nav-groups">
+        <div class="nav-group">
+          <h3>Про сюжет</h3>
+          <div class="nav-group-links">
+            <a class="nav-link" href="#roles">Роли</a>
+            <a class="nav-link" href="#brief-plot">Краткий сюжет</a>
+            <a class="nav-link" href="#plot">Сюжет</a>
+          </div>
+        </div>
+
+        <div class="nav-group">
+          <h3>Ключевые понятия</h3>
+          <div class="nav-group-links">
+            <a class="nav-link" href="#sss">S.S.S.</a>
+            <a class="nav-link" href="#internat">Интернат</a>
+          </div>
+        </div>
+
+        <div class="nav-group">
+          <h3>Правила</h3>
+          <div class="nav-group-links">
+            <a class="nav-link" href="#role-etiquette">Ролевой этикет</a>
+            <a class="nav-link" href="#dni">DNI</a>
+            <a class="nav-link" href="#rules">Правила ролевой</a>
+          </div>
+        </div>
       </div>
     </div>
   </header>
 
   <div class="main-shell">
     <main class="container">
-
-      <section class="section" id="sss">
-        <div class="section-head sss-head">
+      <section class="section" id="concepts">
+        <div class="section-head concepts-head">
           <div class="head-copy">
-            <h2>Second Sunrise Solution (S.S.S.)</h2>
-            <p>Что это за компания, зачем она существует и как устроена её система.</p>
+            <h2>Ключевые понятия</h2>
+            <p>Здесь собраны основные термины лора: S.S.S. и Кадетский Интернат.</p>
           </div>
           <a class="back-chip" href="#nav">вернуться к навигации</a>
         </div>
 
         <div class="content">
-          <div class="sss-box">
-            <h3>Что такое S.S.S.</h3>
-            <p>
-              S.S.S. — это сокращённое название компании Second Sunrise Solution. Она была создана на остатках государственного бюджета США, но позже полностью вышла на самообеспечение.
-            </p>
-            <p>
-              Компания существует с целью сохранения человеческой расы, поэтому формально считается благотворительной. На 2054 год она принимает большую часть выпускников Кадетского Интерната, но попасть в неё можно и позже — например, если есть военный опыт, навыки обращения с оружием или другие значимые достижения.
-            </p>
+          <div class="concepts-grid">
+            <article class="concept-card full" id="sss">
+              <h3>Second Sunrise Solution (S.S.S.)</h3>
+              <p class="muted">Что это за компания, зачем она существует и как устроена её система.</p>
+              <p>
+                S.S.S. — это сокращённое название компании Second Sunrise Solution. Она была создана на остатках государственного бюджета США, но позже полностью вышла на самообеспечение.
+              </p>
+              <p>
+                Компания существует с целью сохранения человеческой расы, поэтому формально считается благотворительной. На 2054 год она принимает большую часть выпускников Кадетского Интерната, но попасть в неё можно и позже — например, если есть военный опыт, навыки обращения с оружием или другие значимые достижения.
+              </p>
 
-            <div class="sss-divider"></div>
+              <div class="sss-divider"></div>
 
-            <h3>Условия работы и “зарплата”</h3>
-            <p>
-              Вместо обычной зарплаты сотрудники получают жильё и обеспечение.
-            </p>
-            <p>
-              Компания владеет несколькими общежитиями, устроенными по типу малосемеек времён СССР. Каждый работник получает отдельную однокомнатную квартиру с базовой мебелью. При этом кухня, душ и туалет — общие на этаж/секции.
-            </p>
-            <p>
-              Также сотрудники обеспечиваются одеждой, обувью, продуктами, крупами и базовыми медикаментами — всем необходимым для выживания.
-            </p>
+              <h3>Условия работы и “зарплата”</h3>
+              <p>
+                Вместо обычной зарплаты сотрудники получают жильё и обеспечение.
+              </p>
+              <p>
+                Компания владеет несколькими общежитиями, устроенными по типу малосемеек времён СССР. Каждый работник получает отдельную однокомнатную квартиру с базовой мебелью. При этом кухня, душ и туалет — общие на этаж/секции.
+              </p>
+              <p>
+                Также сотрудники обеспечиваются одеждой, обувью, продуктами, крупами и базовыми медикаментами — всем необходимым для выживания.
+              </p>
 
-            <div class="sss-divider"></div>
+              <div class="sss-divider"></div>
 
-            <h3 class="sss-title">Профессии в S.S.S.</h3>
-            <p class="muted">
-              Ниже перечислены должности и роли компании.
-            </p>
+              <h3 class="sss-title">Профессии в S.S.S.</h3>
+              <p class="muted">
+                Ниже перечислены должности и роли компании.
+              </p>
+            </article>
+
+            <article class="concept-card internat-head" id="internat">
+              <h3>Кадетский Интернат</h3>
+              <p class="muted">Учебное заведение, куда попадают в основном сироты, но есть и редкие исключения.</p>
+              <p>
+                В Интернат попадают дети-сироты: он и задуман как место, которое даёт шанс на спокойную жизнь тем, у кого его уже нет. Это что-то вроде детского приюта, но забрать ребёнка оттуда нельзя — только если после распределения нашёлся опекун.
+              </p>
+              <p>
+                Чаще всего в школу попадают те, кто раньше жил за пределами Бастиона, но жители города тоже могут оказаться в Интернате. В очень редких случаях туда принимают и детей из полной семьи — для этого нужно сдать сложные экзамены и действительно показать высокий уровень знаний.
+              </p>
+              <p>
+                Территорию Интерната покидать запрещено. Теоретически выйти можно на выходные и каникулы, но это касается только тех, у кого нашёлся опекун, или тех, кто изначально не остался сиротой.
+              </p>
+              <p>
+                Раз в две недели старших учеников вывозят на практику по стрельбе за пределы Интерната и Бастиона. Из машин их не выпускают, но они отстреливают заражённых и затем возвращаются обратно.
+              </p>
+              <p>
+                Внутри дети живут почти обычной школьной жизнью: уроки, свободное время, дополнительные предметы — стрельба и конный спорт. Оценки есть, но по сути они нужны скорее самим детям: при трудоустройстве важнее физические навыки.
+              </p>
+              <p>
+                Детей селят по 2–4 человека в комнате, обычно по полу и возрасту. Общежитие практичное: двухэтажные кровати, общий стол, шкафы. В спальнях следят за порядком, но личные вещи не проверяют.
+              </p>
+              <p>
+                Питаются дети по расписанию во втором корпусе, где находятся библиотека, столовая, спортзал и несколько кабинетов. Иногда учеников балуют сладостями.
+              </p>
+              <p>
+                Старшие классы научились сбегать через северную стену, и пока администрация этого не замечает. Но при поимке наказание будет серьёзным.
+              </p>
+              <p>
+                Иногда устраивают дискотеки и посиделки; контроль строже для младших и средних классов, а старшеклассникам разрешено больше свободы.
+              </p>
+
+              <div class="sss-divider"></div>
+
+              <h3>Возрастные категории</h3>
+              <ul>
+                <li><strong>5–9 лет</strong> — подготовительные классы. Только основная школьная программа, без дополнительных предметов.</li>
+                <li><strong>10–12 лет</strong> — младшие классы. Дополнительные предметы уже есть, но без углубления; каждый урок — раз в неделю.</li>
+                <li><strong>13–15 лет</strong> — средние классы. Ученик выбирает один углублённый доп. предмет и ходит на него трижды в неделю, остальные — раз в неделю. Второй профиль возможен только по решению администрации.</li>
+                <li><strong>16–17 лет</strong> — старшие классы. Учеников начинают вывозить за пределы Интерната и Бастиона, чтобы учить стрелять.</li>
+              </ul>
+              <p>
+                По окончании последнего класса ученики выпускаются и устраиваются на работу. Лучший путь для них — в S.S.S., но выбор всё равно остаётся за самим выпускником.
+              </p>
+            </article>
           </div>
         </div>
       </section>
@@ -796,7 +1074,7 @@
 
 Слухи начали проверять — группы выживших отправлялись туда на уцелевшем транспорте. И это оказалось правдой.
 
-Джэксонвилл, некогда курортный и крупнейший город Флориды, действительно уцелел. Точнее, создавалось впечатление полной сохранности: город был скрыт за огромной, высокой и массивной каменно-кирпичной стеной. Её почти сразу начали называть Бастионом — и это название быстро стало официальным.
+Джэксонвил, некогда курортный и крупнейший город Флориды, действительно уцелел. Точнее, создавалось впечатление полной сохранности: город был скрыт за огромной, высокой и массивной каменно-кирпичной стеной. Её почти сразу начали называть Бастионом — и это название быстро стало официальным.
 
 Внутри находилась и действовала организованная армия. Вооружённые люди в форме носили знак: «S.S.S.».
 
@@ -854,6 +1132,54 @@
               </p>
               <p>
                 Администрация вправе сначала выдать словесное предупреждение, прежде чем переходить к санкциям. В зависимости от ситуации может быть вынесен варн, мут или другая мера.
+              </p>
+            </article>
+
+            <article class="rule-card full" id="dni">
+              <div class="rule-top">
+                <div class="rule-icon">⛔</div>
+                <h3>DNI</h3>
+              </div>
+              <p>
+                <strong>ДНИ (запрещённые темы и ограничения)</strong>
+              </p>
+              <p>
+                1. Полностью запрещены:
+              </p>
+              <ul>
+                <li>педофилия;</li>
+                <li>груминг;</li>
+                <li>инцест;</li>
+                <li>зоофилия;</li>
+                <li>некрофилия;</li>
+                <li>романтизация сексуализированного насилия;</li>
+                <li>романтизация селфхарма, РПП и суицида;</li>
+                <li>пропаганда нацизма, терроризма и экстремистских идей;</li>
+                <li>разжигание ненависти по полу, национальности, ориентации и другим признакам.</li>
+              </ul>
+
+              <div class="sss-divider"></div>
+
+              <p>
+                2. Упоминание тяжёлых тем допускается только:
+              </p>
+              <ul>
+                <li>если это сюжетно оправдано;</li>
+                <li>без романтизации и оправдания;</li>
+                <li>без детализированного смакования;</li>
+                <li>со скрытием под спойлер и TW/CW.</li>
+              </ul>
+
+              <div class="sss-divider"></div>
+
+              <p>
+                3. Насилие, жестокость, смерть, кровь и хоррор как элементы мира допустимы, поскольку являются частью сеттинга (зомби-апокалипсис), но не должны превращаться в самоцель.
+              </p>
+              <p>
+                4. Спорные случаи рассматриваются индивидуально администрацией.
+              </p>
+              <p>
+                5. Если есть ощущение, что игрок использует правило как лазейку ради шока, провокации или реализации сомнительных фантазий, администрация оставляет за собой право ограничить или запретить такой отыгрыш.
               </p>
             </article>
 
